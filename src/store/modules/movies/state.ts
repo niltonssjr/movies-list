@@ -1,5 +1,5 @@
 import { MovieType } from "@/types/movieType";
-const defaultSearch = "avengers";
+const defaultSearch = process.env.VUE_APP_DEFAULT_SEARCH;
 
 export interface State {
   movies: Array<MovieType>;
