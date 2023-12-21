@@ -8,6 +8,8 @@
         sm="6"
         md="4"
         lg="3"
+        xl="2"
+        class="text-center"
       >
         <movie-card :movie="movie" />
       </v-col>

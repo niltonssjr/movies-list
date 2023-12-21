@@ -1,7 +1,12 @@
 <template>
-  <v-card class="pa-1">
+  <v-card class="pa-1 d-inline-block">
     <v-sheet>
-      <v-img :src="movie.poster" lazy-src="https://placehold.co/300x500">
+      <v-img
+        :src="movie.poster"
+        lazy-src="https://placehold.co/300x500"
+        height="394"
+        width="265"
+      >
         <template v-slot:placeholder>
           <v-row class="fill-height ma-0" align="center" justify="center">
             <v-progress-circular
