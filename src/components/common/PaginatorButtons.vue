@@ -30,7 +30,7 @@ export default Vue.extend({
   },
   props: {
     recordCount: {
-      type: Number,
+      type: [Number, String],
       default: 1,
     },
     page: {
@@ -44,13 +44,15 @@ export default Vue.extend({
   },
   computed: {
     showPriorButton(): boolean {
-      return this.recordCount > this.perPage && Number(this.page) > 1;
+      return Number(this.recordCount) > this.perPage && Number(this.page) > 1;
     },
     showNextButton(): boolean {
       const maxPage: number = Math.ceil(
         Number(this.recordCount) / Number(this.perPage)
       );
-      return this.recordCount > this.perPage && Number(this.page) < maxPage;
+      return (
+        Number(this.recordCount) > this.perPage && Number(this.page) < maxPage
+      );
     },
   },
   methods: {

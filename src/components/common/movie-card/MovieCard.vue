@@ -1,5 +1,15 @@
 <template>
-  <v-card class="pa-1 d-inline-block">
+  <v-card class="pa-1 d-inline-block" :style="{ position: 'relative' }">
+    <favorite-button
+      :style="{
+        position: 'absolute',
+        right: '-10px',
+        top: '-10px',
+        zIndex: '2',
+      }"
+      :checked="isFavorite"
+      @toggle-check="toggleFavorite"
+    />
     <v-sheet>
       <v-img
         :src="movie.poster"
@@ -30,10 +40,24 @@
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import { MovieType } from "@/types/movieType";
+import FavoriteButton from "./FavoriteButton.vue";
+
 export default Vue.extend({
+  components: {
+    FavoriteButton,
+  },
   props: {
     movie: {
       type: Object as PropType<MovieType>,
+    },
+    isFavorite: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    toggleFavorite() {
+      this.$emit("toggle-favorite");
     },
   },
 });

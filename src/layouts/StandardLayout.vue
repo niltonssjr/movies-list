@@ -5,11 +5,7 @@
         <v-toolbar-title><navbar-logo /></v-toolbar-title>
         <v-sheet class="d-flex flex-row justify-end align-center">
           <icon-button icon="mdi-movie" label="Search" />
-          <icon-button
-            icon="mdi-heart"
-            label="My favourites"
-            icon-color="red"
-          />
+          <icon-button icon="mdi-heart" label="My favorites" icon-color="red" />
         </v-sheet>
       </v-container>
     </v-app-bar>
