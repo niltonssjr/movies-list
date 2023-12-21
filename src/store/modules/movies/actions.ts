@@ -1,11 +1,12 @@
 import { MoviesServices } from "./services";
 import { State } from "./state";
+import { Commit, Dispatch } from "vuex";
 
 const actionListMovies = async ({
   commit,
   state,
 }: {
-  commit: any;
+  commit: Commit;
   state: State;
 }) => {
   try {
@@ -26,6 +27,15 @@ const actionListMovies = async ({
   }
 };
 
+const actionSearchMovies = async (
+  { dispatch, commit }: { dispatch: Dispatch; commit: Commit },
+  { search }: { search: string }
+) => {
+  commit("SET_MOVIES_SEARCH", search);
+  dispatch("actionListMovies");
+};
+
 export default {
   actionListMovies,
+  actionSearchMovies,
 };
