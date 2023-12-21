@@ -7,6 +7,8 @@ export interface State {
     search: string;
     page: number;
   };
+  recordCount: number;
+  perPage: number;
 }
 export default {
   movies: [],
@@ -14,4 +16,6 @@ export default {
     search: defaultSearch,
     page: 1,
   },
+  recordCount: 1,
+  perPage: 10,
 } as State;

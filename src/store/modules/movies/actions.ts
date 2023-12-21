@@ -18,8 +18,9 @@ const actionListMovies = async ({
       ...otherParms,
       s: search,
     };
-    const { moviesList } = await MoviesServices.list(filter);
+    const { moviesList, recordCount } = await MoviesServices.list(filter);
     commit("SET_MOVIES_LIST", moviesList);
+    commit("SET_RECORD_COUNT", recordCount);
     return Promise.resolve(moviesList);
   } catch (error) {
     commit("SET_MOVIES_LIST", []);
@@ -32,10 +33,20 @@ const actionSearchMovies = async (
   { search }: { search: string }
 ) => {
   commit("SET_MOVIES_SEARCH", search);
+  commit("SET_MOVIES_PAGE", 1);
+  dispatch("actionListMovies");
+};
+
+const actionPaginateMovies = async (
+  { dispatch, commit }: { dispatch: Dispatch; commit: Commit },
+  { page }: { page: number }
+) => {
+  commit("SET_MOVIES_PAGE", page);
   dispatch("actionListMovies");
 };
 
 export default {
   actionListMovies,
   actionSearchMovies,
+  actionPaginateMovies,
 };

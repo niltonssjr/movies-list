@@ -1,10 +1,10 @@
-import { httpService, generateQueryParam } from "@/libraries/http";
+import { httpService } from "@/libraries/http";
 import { MovieType } from "@/types/movieType";
 
 const list = async (filter = {}) => {
   try {
     const { Search, totalResults: recordCount } = (
-      await httpService.get(generateQueryParam(filter))
+      await httpService.get("/", { params: filter })
     ).data;
     const moviesList: Array<MovieType> = Search.map(
       (movie: any): MovieType => ({
