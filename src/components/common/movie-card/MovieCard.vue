@@ -1,5 +1,8 @@
 <template>
-  <v-card class="pa-1 d-inline-block" :style="{ position: 'relative' }">
+  <v-card
+    class="pa-1 d-inline-block rounded-b-xxl black"
+    :style="{ position: 'relative' }"
+  >
     <favorite-button
       :style="{
         position: 'absolute',
@@ -29,11 +32,15 @@
     </v-sheet>
     <v-sheet
       height="100"
-      class="pa-2 d-flex flex-column justify-center align-center"
+      width="265"
+      class="py-2 px-0 d-flex flex-column justify-start align-center black"
     >
-      <div class="text-body-1 text-uppercase font-weight-bold">
+      <v-sheet
+        class="text-body-1 text-uppercase font-weight-bold py-1 px-3 white--text rounded-md black"
+        :title="movie.title"
+      >
         {{ movie.title }}
-      </div>
+      </v-sheet>
     </v-sheet>
   </v-card>
 </template>
