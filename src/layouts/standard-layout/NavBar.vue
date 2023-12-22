@@ -8,7 +8,12 @@
           label="Search"
           @click="navigateTo({ name: 'Home' })"
         />
-        <v-badge bordered color="primary" content="235" overlap>
+        <v-badge
+          bordered
+          color="primary"
+          :content="getFavoritesRecordCount || '0'"
+          overlap
+        >
           <icon-button
             icon="mdi-heart"
             label="My favorites"
@@ -24,11 +29,15 @@
 import Vue from "vue";
 import { IconButton } from "@/components/theme/buttons";
 import NavbarLogo from "./NavbarLogo.vue";
+import { mapGetters } from "vuex";
 
 export default Vue.extend({
   components: {
     IconButton,
     NavbarLogo,
+  },
+  computed: {
+    ...mapGetters("favorites", ["getFavoritesRecordCount"]),
   },
   methods: {
     navigateTo(route: { name: string }) {
