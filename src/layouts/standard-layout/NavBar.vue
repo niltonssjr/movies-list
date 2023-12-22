@@ -41,7 +41,7 @@ export default Vue.extend({
   },
   methods: {
     navigateTo(route: { name: string }) {
-      this.$router.push(route);
+      this.$router.push(route).catch(() => false);
     },
   },
 });
