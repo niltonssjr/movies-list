@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     v-model="inputValue"
-    label="Find amazing movies here!"
+    :label="label"
     :full-width="true"
     class="light-grey"
     rounded
@@ -13,6 +13,10 @@ import Vue from "vue";
 export default Vue.extend({
   props: {
     value: {
+      type: String,
+      default: "",
+    },
+    label: {
       type: String,
       default: "",
     },
