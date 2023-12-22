@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="d-flex justify-center align-center">
-    <IconButton
+    <icon-button
       icon="mdi-arrow-left-bold-circle"
       buttonColor="primary"
       iconColor="white"
@@ -9,7 +9,7 @@
       v-if="showPriorButton"
       @click="goToPreviousPage"
     />
-    <IconButton
+    <icon-button
       icon="mdi-arrow-right-bold-circle"
       buttonColor="primary"
       iconColor="white"
