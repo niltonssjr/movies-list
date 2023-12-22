@@ -5,7 +5,11 @@
         <v-icon color="red" large>mdi-heart</v-icon>My Favorite Movies
       </div>
     </v-sheet>
-    <MoviesList :movies-list="getFavoritesPage" />
+    <MoviesList
+      :movies-list="getFavoritesPage"
+      v-if="getFavoritesPage.length"
+    />
+    <no-favorite-movies v-else />
     <v-sheet class="d-flex-justify-center py-10">
       <PaginatorButtons
         :record-count="getFavoritesRecordCount"
@@ -20,6 +24,7 @@
 <script lang="ts">
 import Vue from "vue";
 import MoviesList from "@/components/common/MoviesList.vue";
+import NoFavoriteMovies from "@/components/common/NoFavoriteMovies.vue";
 
 import { mapState, mapActions, mapGetters } from "vuex";
 import PaginatorButtons from "@/components/common/PaginatorButtons.vue";
@@ -28,6 +33,7 @@ export default Vue.extend({
   components: {
     MoviesList,
     PaginatorButtons,
+    NoFavoriteMovies,
   },
   computed: {
     ...mapGetters("favorites", ["getFavoritesPage", "getFavoritesRecordCount"]),
