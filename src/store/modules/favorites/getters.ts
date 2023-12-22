@@ -11,7 +11,12 @@ const getFavoritesRecordCount = (state: FavoriteState) => {
 const getFavoritesPage = (state: FavoriteState) => {
   const { perPage, page } = state.listConfig;
   const startPosition: number = (page - 1) * perPage;
-  return state.favorites.slice(startPosition, startPosition + perPage);
+  return state.favorites
+    .slice(startPosition, startPosition + perPage)
+    .map((movie: MovieType) => ({
+      ...movie,
+      ratings: state.ratings[movie.imdbID] || 0,
+    }));
 };
 
 export default {

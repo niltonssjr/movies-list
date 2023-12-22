@@ -4,4 +4,5 @@ export type MovieType = {
   imdbID: string;
   type: string;
   poster: string;
+  ratings?: number;
 };

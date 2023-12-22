@@ -1,6 +1,7 @@
 <template>
   <v-card
-    class="pa-1 d-inline-block rounded-b-xxl black"
+    class="pa-1 d-inline-block rounded-b-xxl black pb-3"
+    height="540"
     :style="{ position: 'relative' }"
   >
     <favorite-button
@@ -13,7 +14,7 @@
       :checked="isFavorite"
       @toggle-check="toggleFavorite"
     />
-    <v-sheet>
+    <div>
       <v-img
         :src="movie.poster"
         lazy-src="https://placehold.co/300x500"
@@ -29,29 +30,32 @@
           </v-row>
         </template>
       </v-img>
-    </v-sheet>
+    </div>
     <v-sheet
       height="100"
       width="265"
-      class="py-2 px-0 d-flex flex-column justify-start align-center black"
+      class="py-2 px-0 d-flex flex-column justify-center align-center black"
     >
-      <v-sheet
+      <div
         class="text-body-1 text-uppercase font-weight-bold py-1 px-3 white--text rounded-md black"
         :title="movie.title"
       >
         {{ movie.title }}
-      </v-sheet>
+      </div>
     </v-sheet>
+    <movie-rating :value="rating" v-if="isFavorite" @input="emitRating" />
   </v-card>
 </template>
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import { MovieType } from "@/types/movieType";
 import FavoriteButton from "./FavoriteButton.vue";
+import MovieRating from "./MovieRating.vue";
 
 export default Vue.extend({
   components: {
     FavoriteButton,
+    MovieRating,
   },
   props: {
     movie: {
@@ -61,10 +65,17 @@ export default Vue.extend({
       type: Boolean,
       default: false,
     },
+    rating: {
+      type: Number,
+      default: 5,
+    },
   },
   methods: {
     toggleFavorite() {
       this.$emit("toggle-favorite");
+    },
+    emitRating(rating: number) {
+      this.$emit("set-rating", { rating });
     },
   },
 });

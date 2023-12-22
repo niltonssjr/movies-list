@@ -13,8 +13,10 @@
       >
         <movie-card
           :movie="movie"
-          @toggle-favorite="toggleFavorites(movie)"
           :is-favorite="getFavoritesIds.includes(movie.imdbID)"
+          :rating="ratings[movie.imdbID] || 5"
+          @toggle-favorite="toggleFavorites(movie)"
+          @set-rating="setRating({ ...$event, imdbID: movie.imdbID })"
         />
       </v-col>
     </v-row>
@@ -24,7 +26,7 @@
 import Vue, { PropType } from "vue";
 import { MovieType } from "@/types/movieType";
 import MovieCard from "../common/movie-card/MovieCard.vue";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations, mapActions, mapState } from "vuex";
 
 export default Vue.extend({
   components: {
@@ -37,15 +39,23 @@ export default Vue.extend({
     },
   },
   computed: {
+    ...mapState("favorites", ["ratings"]),
     ...mapGetters("favorites", ["getFavoritesIds"]),
   },
   methods: {
     toggleFavorites(movie: MovieType) {
       this.getFavoritesIds.includes(movie.imdbID)
-        ? this.REMOVE_FROM_FAVORITES(movie)
-        : this.ADD_TO_FAVORITES(movie);
+        ? this.actionRemoveFromFavorites({ movie })
+        : this.actionAddToFavorites({ movie });
     },
-    ...mapMutations("favorites", ["ADD_TO_FAVORITES", "REMOVE_FROM_FAVORITES"]),
+    setRating({ imdbID, rating }: { imdbID: string; rating: number }) {
+      this.SET_RATE({ imdbID, rating });
+    },
+    ...mapMutations("favorites", ["REMOVE_FROM_FAVORITES", "SET_RATE"]),
+    ...mapActions("favorites", [
+      "actionAddToFavorites",
+      "actionRemoveFromFavorites",
+    ]),
   },
 });
 </script>

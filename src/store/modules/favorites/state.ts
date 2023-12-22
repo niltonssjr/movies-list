@@ -6,6 +6,7 @@ export type FavoriteState = {
     page: number;
     perPage: number;
   };
+  ratings: Record<string, number>;
 };
 
 export default {
@@ -14,4 +15,5 @@ export default {
     page: 1,
     perPage: 10,
   },
+  ratings: {},
 } as FavoriteState;
