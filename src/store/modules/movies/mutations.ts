@@ -1,19 +1,22 @@
 import { MovieType } from "@/types/movieType";
-import { State } from "./state";
+import { MovieStateType } from "./state";
 
-const SET_MOVIES_LIST = (state: State, moviesList: Array<MovieType>) => {
+const SET_MOVIES_LIST = (
+  state: MovieStateType,
+  moviesList: Array<MovieType>
+) => {
   state.movies = moviesList.map((movie: MovieType) => Object.freeze(movie));
 };
 
-const SET_MOVIES_SEARCH = (state: State, search: string) => {
+const SET_MOVIES_SEARCH = (state: MovieStateType, search: string) => {
   state.listConfig.search = search;
 };
 
-const SET_RECORD_COUNT = (state: State, recordCount: number) => {
+const SET_RECORD_COUNT = (state: MovieStateType, recordCount: number) => {
   state.recordCount = recordCount;
 };
 
-const SET_MOVIES_PAGE = (state: State, page: number) => {
+const SET_MOVIES_PAGE = (state: MovieStateType, page: number) => {
   state.listConfig.page = page;
 };
 

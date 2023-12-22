@@ -1,19 +1,21 @@
 <template>
-  <v-sheet>
-    <v-sheet class="my-10 d-flex flex-column justify-start align-center">
-      <div class="text-h3">Search for movies!</div>
-    </v-sheet>
-    <search-movies class="mb-10" />
+  <div>
+    <div class="mt-10 mb-6 text-h3 text-center">
+      Which movie are you looking for?
+    </div>
+    <div class="py-3 px-16">
+      <search-movies class="mb-10" />
+    </div>
     <MoviesList :movies-list="movies" />
-    <v-sheet class="d-flex-justify-center py-10">
+    <div class="d-flex-justify-center py-10">
       <PaginatorButtons
         :record-count="recordCount"
         :page="listConfig.page"
         :per-page="perPage"
         @paginate="paginate"
       />
-    </v-sheet>
-  </v-sheet>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,6 +1,6 @@
 import { MovieType } from "@/types/movieType";
 
-export type FavoriteState = {
+export type FavoriteStateType = {
   favorites: Array<MovieType>;
   listConfig: {
     page: number;
@@ -16,4 +16,4 @@ export default {
     perPage: 10,
   },
   ratings: {},
-} as FavoriteState;
+} as FavoriteStateType;

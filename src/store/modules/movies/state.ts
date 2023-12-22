@@ -1,7 +1,7 @@
 import { MovieType } from "@/types/movieType";
 const defaultSearch = process.env.VUE_APP_DEFAULT_SEARCH;
 
-export interface State {
+export interface MovieStateType {
   movies: Array<MovieType>;
   listConfig: {
     search: string;
@@ -9,6 +9,7 @@ export interface State {
   };
   recordCount: number;
   perPage: number;
+  defaultSearch: string;
 }
 export default {
   movies: [],
@@ -18,4 +19,5 @@ export default {
   },
   recordCount: 1,
   perPage: 10,
-} as State;
+  defaultSearch,
+} as MovieStateType;

@@ -1,5 +1,5 @@
 import { MoviesServices } from "./services";
-import { State } from "./state";
+import { MovieStateType } from "./state";
 import { Commit, Dispatch } from "vuex";
 
 const actionListMovies = async ({
@@ -7,7 +7,7 @@ const actionListMovies = async ({
   state,
 }: {
   commit: Commit;
-  state: State;
+  state: MovieStateType;
 }) => {
   try {
     const {
@@ -29,10 +29,14 @@ const actionListMovies = async ({
 };
 
 const actionSearchMovies = async (
-  { dispatch, commit }: { dispatch: Dispatch; commit: Commit },
+  {
+    dispatch,
+    commit,
+    state,
+  }: { dispatch: Dispatch; commit: Commit; state: MovieStateType },
   { search }: { search: string }
 ) => {
-  commit("SET_MOVIES_SEARCH", search);
+  commit("SET_MOVIES_SEARCH", search || state.defaultSearch);
   commit("SET_MOVIES_PAGE", 1);
   dispatch("actionListMovies");
 };

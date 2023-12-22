@@ -1,12 +1,12 @@
 import { MovieType } from "@/types/movieType";
-import { FavoriteState } from "./state";
+import { FavoriteStateType } from "./state";
 
-const ADD_TO_FAVORITES = (state: FavoriteState, movie: MovieType) => {
+const ADD_TO_FAVORITES = (state: FavoriteStateType, movie: MovieType) => {
   state.favorites.push(movie);
 };
 
 const REMOVE_FROM_FAVORITES = (
-  state: FavoriteState,
+  state: FavoriteStateType,
   receivedMovie: MovieType
 ) => {
   const movieIndex: number = state.favorites.findIndex(
@@ -16,7 +16,7 @@ const REMOVE_FROM_FAVORITES = (
 };
 
 const SET_RATE = (
-  state: FavoriteState,
+  state: FavoriteStateType,
   { imdbID, rating }: { imdbID: string; rating: number }
 ) => {
   state.ratings = {
@@ -25,7 +25,7 @@ const SET_RATE = (
   };
 };
 
-const SET_FAVORITES_PAGE = (state: FavoriteState, page: number) => {
+const SET_FAVORITES_PAGE = (state: FavoriteStateType, page: number) => {
   state.listConfig.page = page;
 };
 
