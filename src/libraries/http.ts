@@ -13,11 +13,3 @@ httpService.interceptors.request.use((config) => {
   };
   return config;
 });
-
-export const generateQueryParam = (filter: Record<string, never>): string => {
-  const urlSearchParam = new URLSearchParams();
-  Object.entries(filter).forEach(([key, value]) => {
-    urlSearchParam.set(key, value);
-  });
-  return urlSearchParam.toString();
-};
