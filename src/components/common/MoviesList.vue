@@ -1,5 +1,5 @@
 <template>
-  <v-sheet>
+  <div>
     <v-row>
       <v-col
         v-for="movie in moviesList"
@@ -20,7 +20,7 @@
         />
       </v-col>
     </v-row>
-  </v-sheet>
+  </div>
 </template>
 <script lang="ts">
 import Vue, { PropType } from "vue";
