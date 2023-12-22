@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="pa-1 d-inline-block rounded-b-xxl black pb-3"
+    class="pa-0 d-inline-block rounded-b-xxl black pb-3 mb-2"
     height="540"
     :style="{ position: 'relative' }"
   >
@@ -15,14 +15,13 @@
       @toggle-check="toggleFavorite"
     />
     <div>
-      <v-img
-        :src="movie.poster"
-        lazy-src="https://placehold.co/300x500"
-        height="394"
-        width="265"
-      >
+      <v-img :src="movie.poster" height="394" width="265">
         <template v-slot:placeholder>
-          <v-row class="fill-height ma-0" align="center" justify="center">
+          <v-row
+            class="fill-height ma-0 lighter-grey"
+            align="center"
+            justify="center"
+          >
             <v-progress-circular
               indeterminate
               color="grey lighten-5"
