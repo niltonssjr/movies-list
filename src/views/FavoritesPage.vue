@@ -1,15 +1,16 @@
 <template>
   <v-sheet>
     <v-sheet class="my-10 d-flex flex-column justify-start align-center">
-      <div class="text-h3">Search for movies!</div>
+      <div class="text-h3">
+        <v-icon color="red" large>mdi-heart</v-icon>My Favorite Movies
+      </div>
     </v-sheet>
-    <search-movies class="mb-10" />
-    <MoviesList :movies-list="movies" />
+    <MoviesList :movies-list="getFavoritesPage" />
     <v-sheet class="d-flex-justify-center py-10">
       <PaginatorButtons
-        :record-count="recordCount"
+        :record-count="getFavoritesRecordCount"
         :page="listConfig.page"
-        :per-page="perPage"
+        :per-page="listConfig.perPage"
         @paginate="paginate"
       />
     </v-sheet>
@@ -19,30 +20,23 @@
 <script lang="ts">
 import Vue from "vue";
 import MoviesList from "@/components/common/MoviesList.vue";
-import SearchMovies from "@/components/page-components/home-page/SearchMovies.vue";
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import PaginatorButtons from "@/components/common/PaginatorButtons.vue";
 
 export default Vue.extend({
   components: {
     MoviesList,
-    SearchMovies,
     PaginatorButtons,
   },
   computed: {
-    ...mapState("movies", ["movies", "recordCount", "listConfig", "perPage"]),
-  },
-  mounted() {
-    this.listMovies();
+    ...mapGetters("favorites", ["getFavoritesPage", "getFavoritesRecordCount"]),
+    ...mapState("favorites", ["listConfig"]),
   },
   methods: {
-    ...mapActions("movies", ["actionListMovies", "actionPaginateMovies"]),
-    async listMovies() {
-      await this.actionListMovies();
-    },
+    ...mapActions("favorites", ["actionPaginateFavorites"]),
     async paginate(page: number) {
-      await this.actionPaginateMovies({ page });
+      await this.actionPaginateFavorites({ page });
     },
   },
 });

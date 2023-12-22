@@ -6,8 +6,13 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "home",
-    component: () => import("@/views/HomePage.vue"),
+    name: "Home",
+    component: () => import("@/views/home-page/HomePage.vue"),
+  },
+  {
+    path: "/favorites",
+    name: "Favorites",
+    component: () => import("@/views/FavoritesPage.vue"),
   },
 ];
 
