@@ -6,10 +6,10 @@
     <div class="py-3 px-16">
       <search-movies class="mb-10" />
     </div>
-    <MoviesList :movies-list="movies" v-if="movies.length" />
-    <NoMoviesFound v-else />
+    <movies-list :movies-list="movies" v-if="movies.length" />
+    <no-movies-found v-else />
     <div class="d-flex-justify-center py-10">
-      <PaginatorButtons
+      <paginator-buttons
         :record-count="recordCount"
         :page="listConfig.page"
         :per-page="perPage"

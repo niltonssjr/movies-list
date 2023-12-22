@@ -1,5 +1,5 @@
 <template>
-  <DebounceTextInput v-model="search" label="Find amazing movies here!" />
+  <debounce-text-input v-model="search" label="Find amazing movies here!" />
 </template>
 <script lang="ts">
 import Vue from "vue";

@@ -5,13 +5,13 @@
         <v-icon color="red" large>mdi-heart</v-icon>My Favorite Movies
       </div>
     </v-sheet>
-    <MoviesList
+    <movies-list
       :movies-list="getFavoritesPage"
       v-if="getFavoritesPage.length"
     />
     <no-favorite-movies v-else />
     <v-sheet class="d-flex-justify-center py-10">
-      <PaginatorButtons
+      <paginator-buttons
         :record-count="getFavoritesRecordCount"
         :page="listConfig.page"
         :per-page="listConfig.perPage"
