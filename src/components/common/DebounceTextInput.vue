@@ -3,7 +3,9 @@
     v-model="inputValue"
     label="Find amazing movies here!"
     :full-width="true"
-    class="text-center"
+    class="light-grey"
+    rounded
+    dense
   ></v-text-field>
 </template>
 <script lang="ts">
