@@ -15,7 +15,7 @@ const REMOVE_FROM_FAVORITES = (
   state.favorites.splice(movieIndex, 1);
 };
 
-const SET_RATE = (
+const SET_RATING = (
   state: FavoriteStateType,
   { imdbID, rating }: { imdbID: string; rating: number }
 ) => {
@@ -33,5 +33,5 @@ export default {
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
   SET_FAVORITES_PAGE,
-  SET_RATE,
+  SET_RATING,
 };

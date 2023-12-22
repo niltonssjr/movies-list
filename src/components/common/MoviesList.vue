@@ -49,9 +49,9 @@ export default Vue.extend({
         : this.actionAddToFavorites({ movie });
     },
     setRating({ imdbID, rating }: { imdbID: string; rating: number }) {
-      this.SET_RATE({ imdbID, rating });
+      this.SET_RATING({ imdbID, rating });
     },
-    ...mapMutations("favorites", ["REMOVE_FROM_FAVORITES", "SET_RATE"]),
+    ...mapMutations("favorites", ["REMOVE_FROM_FAVORITES", "SET_RATING"]),
     ...mapActions("favorites", [
       "actionAddToFavorites",
       "actionRemoveFromFavorites",

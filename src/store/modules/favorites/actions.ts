@@ -12,7 +12,7 @@ const actionAddToFavorites = (
   { movie }: { movie: MovieType }
 ) => {
   commit("ADD_TO_FAVORITES", movie);
-  commit("SET_RATE", { imdbID: movie.imdbID, rating: 5 });
+  commit("SET_RATING", { imdbID: movie.imdbID, rating: 5 });
 };
 
 const actionRemoveFromFavorites = (
