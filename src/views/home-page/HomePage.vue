@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="mt-10 mb-6 text-h3 text-center">
+    <div class="mt-10 mb-6 text-h6 text-md-h4 text-lg-h3 text-center pa-2">
       Which movie are you looking for?
     </div>
     <div class="py-3 px-16">
       <search-movies class="mb-10" />
     </div>
-    <MoviesList :movies-list="movies" />
+    <MoviesList :movies-list="movies" v-if="movies.length" />
+    <NoMoviesFound v-else />
     <div class="d-flex-justify-center py-10">
       <PaginatorButtons
         :record-count="recordCount"
@@ -25,12 +26,14 @@ import SearchMovies from "./SearchMovies.vue";
 
 import { mapState, mapActions } from "vuex";
 import PaginatorButtons from "@/components/common/PaginatorButtons.vue";
+import NoMoviesFound from "@/components/common/NoMoviesFound.vue";
 
 export default Vue.extend({
   components: {
     MoviesList,
     SearchMovies,
     PaginatorButtons,
+    NoMoviesFound,
   },
   computed: {
     ...mapState("movies", ["movies", "recordCount", "listConfig", "perPage"]),
